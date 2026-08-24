@@ -112,6 +112,7 @@ qt_add_lrelease(chiaki
 add_dependencies(chiaki chiaki_lrelease)
 qt_add_resources(chiaki chiaki_translations
 	PREFIX "/i18n"
+	BASE "${CMAKE_CURRENT_BINARY_DIR}"
 	FILES ${CHIAKI_TRANSLATION_QM_FILES}
 )
 target_include_directories(chiaki PRIVATE include)
