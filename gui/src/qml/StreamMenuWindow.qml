@@ -347,7 +347,7 @@ Window {
                 bottom: consoleNameLabel.top
                 bottomMargin: 5
             }
-            text: "Mbps"
+            text: qsTr("Mbps")
             font.pixelSize: 18
             visible: Chiaki.session
 
