@@ -50,5 +50,5 @@ cmake --build build --target chiaki_lupdate
 ```sh
 git remote add upstream https://github.com/streetpea/chiaki-ng.git
 git fetch upstream --tags
-git rebase v1.10.0
+git rebase upstream/main
 ```
