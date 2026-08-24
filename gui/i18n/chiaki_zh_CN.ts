@@ -577,4 +577,46 @@ Steam must be restarted!</source><translation>要让 %1 显示在 Steam 中，
     <message><source>(Unchecked)</source><translation>（未勾选）</translation></message>
     <message><source>* Defaults in () to right of value or marked with (Default)</source><translation>* 括号中、值右侧或标有“（默认）”的项目为默认值</translation></message>
   </context>
+  <context>
+    <name>QmlBackend</name>
+    <message><source>Chiaki Session has quit</source><translation>Chiaki 会话已退出</translation></message>
+    <message><source>Session has quit</source><translation>会话已退出</translation></message>
+    <message><source>Remote Play session</source><translation>远程游玩会话</translation></message>
+    <message><source>Stream failed</source><translation>串流失败</translation></message>
+    <message><source>Reason</source><translation>原因</translation></message>
+    <message><source>Failed to initialize Stream Session: %1</source><translation>初始化串流会话失败：%1</translation></message>
+    <message><source>Failed to start Stream Session: %1</source><translation>启动串流会话失败：%1</translation></message>
+    <message><source>Wakeup failed</source><translation>唤醒失败</translation></message>
+    <message><source>Failed to send Wakeup packet:\n%1</source><translation>发送唤醒数据包失败：\n%1</translation></message>
+    <message><source>Invalid Account-ID</source><translation>账号 ID 无效</translation></message>
+    <message><source>The PSN Account-ID must be exactly %1 bytes encoded as base64.</source><translation>PSN 账号 ID 必须是恰好 %1 字节的 base64 编码值。</translation></message>
+    <message><source>PS4 Console Not Main</source><translation>PS4 主机不是主机</translation></message>
+    <message><source>Can't proceed...%1 is not your main PS4 console in PSN</source><translation>无法继续……%1 不是你在 PSN 中登记的主 PS4 主机</translation></message>
+    <message><source>PS4 Console Unregistered</source><translation>PS4 主机未注册</translation></message>
+    <message><source>Can't proceed...please register your PS4 console locally</source><translation>无法继续……请先在本地注册你的 PS4 主机</translation></message>
+  </context>
+  <context>
+    <name>Settings</name>
+    <message><source>D-Pad Up</source><translation>方向键上</translation></message>
+    <message><source>D-Pad Down</source><translation>方向键下</translation></message>
+    <message><source>D-Pad Left</source><translation>方向键左</translation></message>
+    <message><source>D-Pad Right</source><translation>方向键右</translation></message>
+    <message><source>Left Stick Up</source><translation>左摇杆上</translation></message>
+    <message><source>Left Stick Down</source><translation>左摇杆下</translation></message>
+    <message><source>Left Stick Left</source><translation>左摇杆左</translation></message>
+    <message><source>Left Stick Right</source><translation>左摇杆右</translation></message>
+    <message><source>Right Stick Up</source><translation>右摇杆上</translation></message>
+    <message><source>Right Stick Down</source><translation>右摇杆下</translation></message>
+    <message><source>Right Stick Left</source><translation>右摇杆左</translation></message>
+    <message><source>Right Stick Right</source><translation>右摇杆右</translation></message>
+    <message><source>Left Stick X</source><translation>左摇杆 X</translation></message>
+    <message><source>Left Stick Y</source><translation>左摇杆 Y</translation></message>
+    <message><source>Right Stick X</source><translation>右摇杆 X</translation></message>
+    <message><source>Right Stick Y</source><translation>右摇杆 Y</translation></message>
+  </context>
+  <context>
+    <name>StreamSession</name>
+    <message><source>Invalid Account-ID</source><translation>账号 ID 无效</translation></message>
+    <message><source>The PSN Account-ID must be exactly %1 bytes encoded as base64.</source><translation>PSN 账号 ID 必须是恰好 %1 字节的 base64 编码值。</translation></message>
+  </context>
 </TS>
