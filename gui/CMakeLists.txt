@@ -12,7 +12,10 @@ if(Qt6_VERSION VERSION_GREATER_EQUAL "6.10.0")
 	find_package(Qt6 REQUIRED COMPONENTS GuiPrivate)
 endif()
 
-find_package(Qt6 COMPONENTS WebEngineQuick)
+# Qt WebEngine is unavailable in current MSYS2/MinGW packages. Keep the
+# embedded-login path optional so Windows builds fall back to the external
+# browser flow when the component is not present.
+find_package(Qt6 OPTIONAL_COMPONENTS WebEngineQuick)
 find_package(Qt6 COMPONENTS DBus)
 
 if(WIN32)

@@ -65,7 +65,6 @@ jobs:
             qt6-declarative:p
             qt6-svg:p
             qt6-tools:p
-            qt6-webengine:p
             shaderc:p
             speexdsp:p
             spirv-cross:p
