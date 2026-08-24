@@ -65,6 +65,7 @@ class QmlSettings : public QObject
     Q_PROPERTY(QString autoConnectMac READ autoConnectMac WRITE setAutoConnectMac NOTIFY autoConnectMacChanged)
     Q_PROPERTY(bool allowJoystickBackgroundEvents READ allowJoystickBackgroundEvents WRITE setAllowJoystickBackgroundEvents NOTIFY allowJoystickBackgroundEventsChanged)
     Q_PROPERTY(QString logDirectory READ logDirectory CONSTANT)
+    Q_PROPERTY(QString uiLanguage READ uiLanguage WRITE setUiLanguage NOTIFY uiLanguageChanged)
     Q_PROPERTY(QStringList availableDecoders READ availableDecoders CONSTANT)
     Q_PROPERTY(QStringList availableAudioInDevices READ availableAudioInDevices NOTIFY audioDevicesChanged)
     Q_PROPERTY(QStringList availableAudioOutDevices READ availableAudioOutDevices NOTIFY audioDevicesChanged)
@@ -572,6 +573,8 @@ public:
     void refreshAllPlaceboKeys();
 
     QString logDirectory() const;
+    QString uiLanguage() const;
+    void setUiLanguage(const QString &language);
     QStringList availableDecoders() const;
     QStringList availableAudioOutDevices() const;
     QStringList availableAudioInDevices() const;
@@ -742,6 +745,7 @@ signals:
     void placeboToneMappingContrastRecoveryChanged();
     void placeboToneMappingContrastSmoothnessChanged();
     void placeboChanged();
+    void uiLanguageChanged();
 
 private:
     Settings *settings = {};

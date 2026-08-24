@@ -1,6 +1,11 @@
 name: Build chiaki-ng msys2 x86 Windows
 
 on:
+  push:
+    branches:
+      - zh-CN-localization
+    tags:
+      - 'zh-cn-*'
   workflow_dispatch:
     inputs:
       libplacebo_version:
@@ -59,6 +64,7 @@ jobs:
             qt6-base:p
             qt6-declarative:p
             qt6-svg:p
+            qt6-tools:p
             shaderc:p
             speexdsp:p
             spirv-cross:p

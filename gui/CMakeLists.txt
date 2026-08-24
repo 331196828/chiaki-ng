@@ -7,7 +7,7 @@ if(APPLE)
 	enable_language(OBJCXX)
 endif()
 
-find_package(Qt6 REQUIRED COMPONENTS Core Gui Concurrent Svg Qml Quick Widgets)
+find_package(Qt6 REQUIRED COMPONENTS Core Gui Concurrent Svg Qml Quick Widgets LinguistTools)
 if(Qt6_VERSION VERSION_GREATER_EQUAL "6.10.0")
 	find_package(Qt6 REQUIRED COMPONENTS GuiPrivate)
 endif()
@@ -91,6 +91,28 @@ endif()
 add_executable(chiaki WIN32
 		${RESOURCE_FILES}
 		${SOURCE_FILES}
+)
+
+# Keep translations separate from the QML/C++ sources. Qt Linguist extracts
+# qsTr()/tr() source text and lrelease compiles the shipped .qm at build time.
+set(CHIAKI_TRANSLATION_TS_FILES
+	${CMAKE_CURRENT_SOURCE_DIR}/i18n/chiaki_zh_CN.ts
+)
+file(GLOB_RECURSE CHIAKI_QML_TRANSLATION_SOURCES
+	${CMAKE_CURRENT_SOURCE_DIR}/src/qml/*.qml
+)
+qt_add_lupdate(chiaki
+	TS_FILES ${CHIAKI_TRANSLATION_TS_FILES}
+	SOURCES ${SOURCE_FILES} ${CHIAKI_QML_TRANSLATION_SOURCES}
+)
+qt_add_lrelease(chiaki
+	TS_FILES ${CHIAKI_TRANSLATION_TS_FILES}
+	QM_FILES_OUTPUT_VARIABLE CHIAKI_TRANSLATION_QM_FILES
+)
+add_dependencies(chiaki chiaki_lrelease)
+qt_add_resources(chiaki chiaki_translations
+	PREFIX "/i18n"
+	FILES ${CHIAKI_TRANSLATION_QM_FILES}
 )
 target_include_directories(chiaki PRIVATE include)
 

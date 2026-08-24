@@ -40,6 +40,9 @@ int main(int argc, char *argv[]) { return real_main(argc, argv); }
 #include <QCommandLineParser>
 #include <QMap>
 #include <QSurfaceFormat>
+#include <QLocale>
+#include <QSettings>
+#include <QTranslator>
 
 Q_DECLARE_METATYPE(ChiakiLogLevel)
 Q_DECLARE_METATYPE(ChiakiRegistEventType)
@@ -124,6 +127,22 @@ int real_main(int argc, char *argv[])
 	QtWebEngineQuick::initialize();
 #endif
 	QApplication app(argc, argv);
+
+	// Load the catalog before constructing QML. English remains the fallback
+	// whenever a catalog is unavailable or does not contain a given string.
+	QSettings applicationSettings;
+	const QString storedLanguage = applicationSettings.value(QStringLiteral("ui/language")).toString();
+	const QString uiLanguage = storedLanguage.isEmpty()
+		? (QLocale::system().name() == QStringLiteral("zh_CN") ? QStringLiteral("zh_CN") : QStringLiteral("en"))
+		: storedLanguage;
+	QTranslator translator;
+	if (uiLanguage == QStringLiteral("zh_CN"))
+	{
+		if (!translator.load(QStringLiteral(":/i18n/chiaki_zh_CN.qm")))
+			qWarning("Unable to load Simplified Chinese translation catalog; using English.");
+		else
+			app.installTranslator(&translator);
+	}
 
 #ifdef Q_OS_MACOS
 	QGuiApplication::setWindowIcon(QIcon(":/icons/chiaking_macos.svg"));

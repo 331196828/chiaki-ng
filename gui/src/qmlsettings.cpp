@@ -11,6 +11,15 @@
 #include <QApplication>
 #include <QCoreApplication>
 #include <QProcess>
+#include <QSettings>
+#include <QLocale>
+
+static QString defaultUiLanguage()
+{
+    return QLocale::system().name() == QStringLiteral("zh_CN")
+        ? QStringLiteral("zh_CN")
+        : QStringLiteral("en");
+}
 
 extern "C" {
 #include <libavcodec/avcodec.h>
@@ -65,6 +74,25 @@ QmlSettings::QmlSettings(Settings *settings, QObject *parent)
 
     connect(settings, &Settings::RegisteredHostsUpdated, this, &QmlSettings::registeredHostsChanged);
     connect(settings, &Settings::ProfilesUpdated, this, &QmlSettings::profilesChanged);
+}
+
+QString QmlSettings::uiLanguage() const
+{
+    QSettings applicationSettings;
+    return applicationSettings.value(QStringLiteral("ui/language"), defaultUiLanguage()).toString();
+}
+
+void QmlSettings::setUiLanguage(const QString &language)
+{
+    const QString normalized = language == QStringLiteral("zh_CN")
+        ? QStringLiteral("zh_CN")
+        : QStringLiteral("en");
+    if (uiLanguage() == normalized)
+        return;
+
+    QSettings applicationSettings;
+    applicationSettings.setValue(QStringLiteral("ui/language"), normalized);
+    emit uiLanguageChanged();
 }
 
 bool QmlSettings::remotePlayAsk() const
