@@ -75,15 +75,17 @@ jobs:
             vulkan:p
             vulkan-headers:p
             
-      - name: Restore v1.10.0 third-party submodules
+      - name: Restore v1.10.0 desktop submodules
         run: |
           git clone --depth 1 --branch v1.10.0 https://github.com/streetpea/chiaki-ng.git /tmp/chiaki-ng-upstream
           git -C /tmp/chiaki-ng-upstream submodule update --init --recursive \
+            test/munit \
             third-party/nanopb \
             third-party/curl \
             third-party/cpp-steam-tools \
             third-party/gf-complete \
             third-party/jerasure
+          cp -a /tmp/chiaki-ng-upstream/test/munit test/
           cp -a /tmp/chiaki-ng-upstream/third-party/nanopb third-party/
           cp -a /tmp/chiaki-ng-upstream/third-party/curl third-party/
           cp -a /tmp/chiaki-ng-upstream/third-party/cpp-steam-tools third-party/
@@ -157,3 +159,4 @@ jobs:
           if-no-files-found: error
           retention-days: 7
           
+
